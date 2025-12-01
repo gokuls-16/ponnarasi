@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { ProductContext } from "../src/data/products";
 import { Link } from "react-router-dom";
+import { CartContext } from "../src/context/CartContext";
 
 export default function ProductLists() {
   const { products, setProducts } = useContext(ProductContext);
-
+const{cart,setCart}=useContext(CartContext)
   const deleteProduct = (_id) => {
     setProducts(products.filter((p) => p._id !== _id));
+    setCart(cart.filter((item) => item._id !== _id))
   };
 
   return (
